@@ -2,9 +2,9 @@ define({
   "name": "Gogobot public API documentation",
   "version": "0.3.0",
   "description": "Gogobot public API endpoints",
-  "apidoc": "<h1>Example text from API.md</h1>\n\n<h2>General</h2>\n\n<p>This Text is optionally and not needed to create the documentation.</p>\n\n<h2>HowTo include</h2>\n\n<p>This text is from file \"API.md\".</p>\n\n<p>In your projects \"package.json\" you can set \"apidoc\" with a description text or \"apidocFilename\" with the filename to include into your documentation.</p>\n\n<p>This example attempts to integrate \"API.md\". If not available, then the \"apidoc\" string is used.</p>\n\n<pre><code>{\n  \"name\": \"example\",\n  \"version\": \"0.3.0\",\n  \"description\": \"apidoc example project.\",\n  \"apidoc\": \"This is a description, it will be ignored if parameter apidocFilename exist.\",\n  \"apidocFilename\": \"API.md\"\n}\n</code></pre>",
+  "apidoc": "<h1>Get Started</h1>\n\n<p>At Gogobot, we’ve released a few API’s that provide access to some of our great travel and review content. Our API’s are available to registered partners at no cost. We can’t wait to see what you build!</p>\n\n<h2>Step 1: Register</h2>\n\n<p>Download and email a signed [API License Agreement] to developersignup@gogobot.com. After review, we’ll assign a client<em>id and secret</em>key for your application.</p>\n\n<p>[Download the API License Agreement]</p>\n\n<h2>Step 2: Get a Signature</h2>\n\n<p>Use your client<em>id and secret</em>key to generate a signature. All requests to the Gogobot API require a client<em>id and signature.\nStep 3: Start Making Requests!\nNow it’s time to start making requests to our endpoints with your shiny new client</em>id and signature!</p>\n\n<p>Before you use our API, don’t forget to read our [Terms of Use].</p>",
   "generator": {
     "version": "0.2.6",
-    "time": "2013-10-03T19:26:32.926Z"
+    "time": "2013-10-03T19:33:12.090Z"
   }
 });
