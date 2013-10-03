@@ -1,6 +1,7 @@
 {
-  "name": "Gogobot API documentation",
-  "version": "3.0.0",
-  "description": "Public API endpoints"
+  "name": "Gogobot public API documentation",
+  "version": "0.3.0",
+  "description": "Gogobot public API endpoints",
+  "apidoc": "This is a description, it will be ignored if parameter apidocFilename exist.",
   "apidocFilename": "API.md"
 }
