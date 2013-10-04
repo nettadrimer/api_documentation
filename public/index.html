@@ -47,7 +47,9 @@
 </script>
 
 <script id="template-apidoc" type="text/x-handlebars-template">
-	Have a comment or question? Feel free to email us anytime for API support at api@gogobot.com.
+	{{#if apidoc}}
+	  <div id="api-_" class="apidoc">{{{apidoc}}}</div>
+	{{/if}}
 </script>
 
 <script id="template-generator" type="text/x-handlebars-template">
