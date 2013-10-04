@@ -18,7 +18,7 @@
  * @apiparam {String} signature Your calculated signature
  *
  * @apiSuccessExample Success-Response:
- *     HTTP/1.1 404 Not Found
+ *     HTTP/1.1 200 Not OK
  *     {
  *        status:200,
  *        attribution_url:"http://dev.gogobot.com",
@@ -98,11 +98,12 @@
  *        ]
  *     }
  *
- * @apiError UserNotFound The id of the User was not found.
+ * @apiError PlaceNotFound or any other related error
  *
  * @apiErrorExample Error-Response:
- *     HTTP/1.1 404 Not Found
+ *     HTTP/1.1 500 ServerError
  *     {
- *       "error": "UserNotFound"
+ *       "errors": ["Error Message 1", "Error Message 2"],
+ *       "errorStatusCode": "500/401/..."
  *     }
  */
