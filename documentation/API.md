@@ -64,57 +64,60 @@ Here are two sample codes for obtaining the signature:
 					params.add(query.get(i).getName() + query.get(i).getValue());
 				}
 			}
-		} else if (postMaps != null) {
-			Object[] keySet = postMaps.keySet().toArray();
-			for (int i = 0; i < keySet.length; i++) {
-				String key = (String) keySet[i];
+			} else if (postMaps != null) {
+				Object[] keySet = postMaps.keySet().toArray();
+				for (int i = 0; i < keySet.length; i++) {
+					String key = (String) keySet[i];
 
-				String value = (String) postMaps.get(key);
-				if (value != null && !value.equals("")) 
-				{
-					params.add(key + postMaps.get(key));
-				}
+					String value = (String) postMaps.get(key);
+					if (value != null && !value.equals("")) 
+					{
+						params.add(key + postMaps.get(key));
+					}
 				
+				}
+			}
+
+			Collections.sort(params);
+
+			params.add(OAUTH_CLIENT_SECRET);
+
+			for (int i = 0; i < params.size(); i++) {
+				returnValue = returnValue + params.get(i);
+			}
+
+			String ret	= null;
+		
+			try {
+				ret	= this.encodeHMAC(this.OAUTH_CLIENT_SECRET, returnValue);
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+		
+				return ret;
 			}
 		}
-
-		Collections.sort(params);
-
-		params.add(OAUTH_CLIENT_SECRET);
-
-		for (int i = 0; i < params.size(); i++) {
-			returnValue = returnValue + params.get(i);
-		}
-
-		String ret	= null;
-		
-		try {
-			ret	= this.encodeHMAC(this.OAUTH_CLIENT_SECRET, returnValue);
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-		
-		return ret;
+	}
 
 #### iOS Sample Code for Signature
 
 	- (NSString *)apiSignatureFromRequest:(NSURLRequest *)request {
 		NSMutableDictionary *params;
 	
-	    NSURL *url = [request URL];
+		NSURL *url = [request URL];
     
 		if (![[request HTTPMethod] isEqualToString:@"POST"])
-			params = [url query] ? [[[url query] httpParams] mutableCopy] : [NSMutableDictionary dictionary];
+		params = [url query] ? [[[url query] httpParams] mutableCopy] : [NSMutableDictionary dictionary];
 	
-			[params setValue:GOGOBOT_OAUTH_CLIENT_ID forKey:@"client_id"];
+		[params setValue:GOGOBOT_OAUTH_CLIENT_ID forKey:@"client_id"];
     	
-		    NSMutableString* signature = [NSMutableString stringWithCapacity:512];
-			NSArray* keys = [params.allKeys sortedArrayUsingSelector:@selector(caseInsensitiveCompare:)];
-			for (id key in [keys objectEnumerator]) {
-				id value = [params valueForKey:key];
-				if ([value isKindOfClass:[NSString class]]) {
-					[signature appendFormat:@"%@%@", key, value];
-				}
+		NSMutableString* signature = [NSMutableString stringWithCapacity:512];
+		NSArray* keys = [params.allKeys sortedArrayUsingSelector:@selector(caseInsensitiveCompare:)];
+		for (id key in [keys objectEnumerator]) {
+			id value = [params valueForKey:key];
+			if ([value isKindOfClass:[NSString class]]) {
+				[signature appendFormat:@"%@%@", key, value];
+			}
 		}
 		[signature appendString:GOGOBOT_OAUTH_CLIENT_SECRET];
 	
@@ -124,11 +127,11 @@ Here are two sample codes for obtaining the signature:
 
 		unsigned char cHMAC[CC_SHA256_DIGEST_LENGTH];
     
-	    CCHmac(kCCHmacAlgSHA256, cKey, strlen(cKey), cData, strlen(cData), cHMAC);
-	    NSData *HMAC = [[NSData alloc] initWithBytes:cHMAC length:sizeof(cHMAC)];
+		CCHmac(kCCHmacAlgSHA256, cKey, strlen(cKey), cData, strlen(cData), cHMAC);
+		NSData *HMAC = [[NSData alloc] initWithBytes:cHMAC length:sizeof(cHMAC)];
 
-	    //NSData-Base64: https://github.com/l4u/NSData-Base64
-	    return [HMAC base64EncodedString];
+		//NSData-Base64: https://github.com/l4u/NSData-Base64
+		return [HMAC base64EncodedString];
 	}
 	
 ## Support
