@@ -130,3 +130,7 @@ Here are two sample codes for obtaining the signature:
 	    //NSData-Base64: https://github.com/l4u/NSData-Base64
 	    return [HMAC base64EncodedString];
 	}
+	
+## Support
+
+Have a comment or question? Feel free to email us anytime for API support at api@gogobot.com.
