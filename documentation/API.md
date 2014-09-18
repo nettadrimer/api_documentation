@@ -6,7 +6,7 @@ At Gogobot, we’ve released a few API’s that provide access to some of our gr
 
 Download and email a signed *API License Agreement* to developersignup@gogobot.com. After review, we’ll assign a client_id and secret_key for your application.
 
-*Download the API License Agreement*
+*[Content License Agreement](https://drive.google.com/file/d/0B2GIbeh3a3RnZF9QTjREYkZ2SlU/edit?usp=sharing)*
 
 ## Step 2: Get a Signature
 
@@ -15,9 +15,8 @@ Step 3: Start Making Requests!
 
 Now it’s time to start making requests to our endpoints with your shiny new client_id and signature!
 
-Before you use our API, don’t forget to read our *Terms of Use*.
 
-## Step 3: create the signature
+## Step 3: Create the signature
 All requests to the Gogobot API require the use of a client_id and signature.
 Testing and Production Environments
 
@@ -137,4 +136,4 @@ Here are two sample codes for obtaining the signature:
 	
 ## Support
 
-Have a comment or question? Feel free to email us anytime for API support at api@gogobot.com.
+Have a comment or question? Feel free to email us anytime for API support at [api@gogobot.com](mailto:api.gogobot.com).
