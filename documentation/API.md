@@ -24,7 +24,7 @@ Testing and Production Environments
 A different client_id and secret_key will be provided by Gogobot for testing and production environments.
 Algorithm
 
-Concatenate all params and values (in alphabetical order, removing ‘=’ and ‘&’ chars). This is the payload. Note: Make sure that none of the param values are URL encoded.
+Concatenate all params and values (in alphabetical order, removing ‘=’ and ‘&’ chars). Append the `secret_key` to the string you got. This is the payload. Note: Make sure that none of the param values are URL encoded.
 
 Perform an hmac-sha256 of the payload (using the secret_key provided by Gogobot)
 
@@ -37,7 +37,7 @@ This assumes that the secret key is “12345”
 
 http://api.gogobot.com/api/v3/reviews/get_reviews.json?item_id=5000000067059&item_type=Hotel&client_id=CLIENT_ID&signature=HHU%2BfgkhI3AyGAS1wPFmPJE6wiB5uyyOHUNPTQ%2BgtjM%3D
 
-The signature is calculated by performing a Base64 and hmac-sha256 of the contactenated param string (payload): “client_idCLIENT_IDitem_id5000000067059item_typeHotel”.
+The signature is calculated by performing a Base64 and hmac-sha256 of the contactenated param string (payload): “client_idCLIENT_IDitem_id5000000067059item_typeHotel12345”.
 
 Note: Please make sure to strip any trailing newline characters from the resulting signature. The signature should be url encoded.
 
